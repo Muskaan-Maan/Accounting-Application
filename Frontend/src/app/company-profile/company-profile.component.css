@@ -1,0 +1,21 @@
+
+
+.custom-container {
+    /* Optional: Adjust height for vertical centering */
+    height: 100%;
+    display: flex;
+
+}
+
+.app-dashboard {
+    flex: 0 0 auto; /* Set width of sidebar */
+    height: 100%; /* Ensure the sidebar covers the entire height of the container */
+    overflow-y: auto; 
+}
+
+.card {
+    margin: 0 auto; /* Center the card horizontally */
+    width: 50rem; /* Set width of the card */
+    flex: 1; /* Let the card occupy remaining space */
+    overflow-y: auto; 
+}

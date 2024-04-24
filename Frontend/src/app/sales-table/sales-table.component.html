@@ -1,0 +1,44 @@
+<div class="custom-container">
+  <app-dashboard></app-dashboard>
+  <div class="table-container mt-4 mb-4">
+    <div class="text-center">
+      <h1>Accounts Receivable</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Invoice No.</th>
+            <th scope="col">Date</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Total Amount</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+            
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr *ngFor="let item of paginatedData">
+
+            <td>{{item.invoiceNumber}}</td>
+            <td>{{item.dueDate}}</td>
+            <td>{{item.customerName}}</td>
+            <td>{{item.productDescription}}</td>
+            <td>{{item.quantity * item.price}}</td>
+            <td>{{item.status}}</td>
+            <td><button (click)="invoiceView(item.receivableId)" class="btn btn-info"
+                style="margin-right: 10px;"><i class="lni lni-eye"></i></button>
+           
+            <button (click)="updateInvoice(item.receivableId)" class="btn btn-success"><i class="lni lni-pencil"></i></button></td>
+          </tr>
+
+        </tbody>
+      </table>
+      <app-pagination [totalItems]="invoice.length" [itemsPerPage]="itemsPerPage" [currentPage]="currentPage"
+        (onClick)="changePage($event)"></app-pagination>
+
+      <button skipLocationChange routerLink="/invoice-details" class="col-md-12" type="button"
+        class="btn btn-warning">Generate Invoice</button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,29 @@
+<div class="custom-container">
+    <app-dashboard></app-dashboard>
+    <div class="card mt-4 mb-4">
+        <div class="card-body">
+            <h1 class="card-title text-center"> Update Customer Details</h1>
+            <form [formGroup]="customerForm" (ngSubmit)="update()">
+                <div class="mb-3">
+                    <label for="inputcustomername" class="form-label">Customer Name</label>
+                    <input type="text" pattern="[a-zA-Z\s]{2,60}" [(ngModel)]="customer.customerName" formControlName="customerName"
+                        class="form-control" id="inputcustomername" aria-describedby="emailHelp" required>
+                        <span class="text-danger" *ngIf="customerForm.controls['customerName'].dirty && customerForm.hasError('required', 'customerName')">*Customer Name is required</span>
+                        <span class="text-danger" *ngIf="customerForm.controls['customerName'].dirty && customerForm.hasError('pattern', 'customerName')">*Customer Name must contain only Alphabets</span>
+                        
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Customer Email</label>
+                    <input type="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" [(ngModel)]="customer.customerEmail" formControlName="customerEmail" placeholder="characters@characters.domain" class="form-control"
+                        id="email" required>
+                        <span class="text-danger" *ngIf="customerForm.controls['customerEmail'].dirty && customerForm.hasError('required', 'customerEmail')">*Email is required</span>
+                        <span class="text-danger" *ngIf="customerForm.controls['customerEmail'].dirty && customerForm.hasError('pattern', 'customerEmail')">*Email is invalid</span>
+                </div>
+                <div class="d-grid mb-3 col-6 mx-auto">
+                <button class="col-md-12" type="submit" class="btn btn-dark" [disabled]="!customerForm.valid">Update</button>
+           </div>
+           
+            </form>
+        </div>
+    </div>
+</div>
